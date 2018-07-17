@@ -73,7 +73,7 @@ def solveProlog():
   except Exception as e:
     print( "ex", e)
  
-def dibujar():
+def drawSol():
   aux=0;
   pygame.init()
   w=pygame.display.set_mode((900,600))
@@ -89,22 +89,16 @@ def dibujar():
   
   w.blit(imgBack,(0,0))
   
-    
   S = 200
   for r in range(ROWS):
     for j in range( COLS):
       pos = (j*64+S, r*64+S)
       try:
-        if maze[r][j] =='S':
-          w.blit(imgStart, pos)
-        elif maze[r][j] =='1':
-          w.blit(imgBusy, pos)
-        elif maze[r][j] =='0':
-          w.blit(imgFree, pos)
-        elif maze[r][j] =='E':
-          w.blit(imgEnd, pos)
-        elif maze[r][j] =='X':
-          w.blit(imgWay, pos)
+        if maze[r][j] =='S':   w.blit(imgStart, pos)
+        elif maze[r][j] =='1': w.blit(imgBusy, pos)
+        elif maze[r][j] =='0': w.blit(imgFree, pos)
+        elif maze[r][j] =='E': w.blit(imgEnd, pos)
+        elif maze[r][j] =='X': w.blit(imgWay, pos)
       except IndexError:
         pass
 
@@ -139,10 +133,10 @@ if __name__ == "__main__":
   printm()
   
   print("Solve maze")
-  path = solveProlog()
+  path = solveProlog() #here we go
   printm()
 
-  dibujar()
+  drawSol()
 
 
 
