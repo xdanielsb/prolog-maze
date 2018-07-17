@@ -1,5 +1,6 @@
 Solve maze using Prolog 
 ==============
+
 <b>
 This is an old code of a project that solve a maze using prolog.
 </b>

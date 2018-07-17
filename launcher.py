@@ -29,6 +29,7 @@ def find():
       elif maze[r][c] =='S':
         outm.append([str(r),str(c)])
 
+#Create the facts for prolog
 def create(ra, rc, r , c ):
   if  c >= ROWS or r >= ROWS: return
   if  r < 0 or c < 0: return
@@ -81,6 +82,7 @@ if __name__ == "__main__":
     way = "calle('{}','{}','{}','{}').\n".format(li[0],li[1], li[2], li[3])
     fipl.write( way )
 
+  #Logic find path in prolog
   q = open("prolog/query.pl")
   fipl.write(q.read())
   q.close()
