@@ -8,11 +8,12 @@ def drawSol(maze, ROWS, COLS):
   pygame.display.set_caption("Maze")
 
   root = 'assets/'
-  imgStart = pygame.image.load(root+"door.png")
-  imgBusy = pygame.image.load(root+"wall.png")
-  imgFree = pygame.image.load(root+"footprint.png")
-  imgEnd = pygame.image.load(root+"treasure.png")
-  imgWay = pygame.image.load(root+"foot.png")
+  images = {} 
+  images['S'] = pygame.image.load(root+"door.png")
+  images['1'] = pygame.image.load(root+"wall.png")
+  images['0'] = pygame.image.load(root+"footprint.png")
+  images['E'] = pygame.image.load(root+"treasure.png")
+  images['X'] = pygame.image.load(root+"foot.png")
   imgBack = pygame.image.load(root+"fondo2.png")
   
   w.blit(imgBack,(0,0))
@@ -21,14 +22,11 @@ def drawSol(maze, ROWS, COLS):
   for r in range(ROWS):
     for j in range( COLS):
       pos = (j*64+S, r*64+S)
+      idx = maze[r][j]
       try:
-        if maze[r][j] =='S':   w.blit(imgStart, pos)
-        elif maze[r][j] =='1': w.blit(imgBusy, pos)
-        elif maze[r][j] =='0': w.blit(imgFree, pos)
-        elif maze[r][j] =='E': w.blit(imgEnd, pos)
-        elif maze[r][j] =='X': w.blit(imgWay, pos)
+        w.blit(images[idx], pos)
       except IndexError:
-        pass
+        print(" E01 = {}".format("Error in pos"))
 
   pygame.display.flip()
   while True:
